@@ -1,12 +1,14 @@
 <template>
- <div>
-     
-          <input v-model="inputValue"></input>
-        <button @click="addTodo">Add</button>
-        <ul>
-          <li v-for="(toDoItem, i) in toDoItems" :key="i">{{ toDoItem }}</li>
-        </ul>
-      </div>
+  <div>
+    <md-field>
+      <label>Add To Do Item</label>
+      <md-input v-model="inputValue" />
+    </md-field>
+    <md-button @click="addTodo">Add</md-button>
+    <md-list>
+      <md-list-item v-for="(toDoItem, i) in toDoItems" :key="i">{{ toDoItem }}</md-list-item>
+    </md-list>
+  </div>
 </template>
 
 <script>
