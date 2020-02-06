@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material/dist/vue-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material/dist/theme/default.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #fff;
+        }
+    </style>
+    <title>To Do List</title>
+</head>
+
+<body>
+    <div id="app">
+        <md-app>
+            <md-app-toolbar>
+                <h1>To Do List</h1>
+            </md-app-toolbar>
+            <md-app-content>
+                <md-field>
+                    <md-input v-model="inputValue"></md-input>
+                </md-field>
+                <md-button @click="addTodo">Add</md-button>
+                <md-list>
+                    <md-list-item v-for="(toDoItem, i) in toDoItems" :key="i">
+                     {{ toDoItem }}
+                    </md-list-item>
+                    </md-list>
+            </md-app-content>
+        </md-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-material"></script>
+    <script>
+        Vue.use(VueMaterial.default)
+
+        const app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    inputValue: "",
+                    toDoItems: ["Blah"]
+                }
+            },
+            methods: {
+                addTodo() {
+                    this.toDoItems = [...this.toDoItems, this.inputValue]
+                    this.inputValue = ""
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
