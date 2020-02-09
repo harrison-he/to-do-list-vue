@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <h1 class="md-headline">To Do Items</h1>
+    <div class="top-row">
+      <h1 class="md-headline">To Do Items</h1>
+      <md-button class="md-raised" @click="openDialog" >Add To Do Item</md-button>
+    </div>
     <ToDoCreator />
     <md-list>
       <ToDoItem v-for="({ id, title }) in toDoItems" :key="id" :title="title" />
@@ -11,7 +14,7 @@
 <script>
 import ToDoCreator from './../components/ToDoCreator'
 import ToDoItem from './../components/ToDoItem'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   name: "toDoList",
@@ -20,7 +23,10 @@ export default {
     ToDoItem
   },
   computed: mapGetters(["toDoItems"]),
-  methods: mapActions(["getToDoItems"]),
+  methods: {
+    ...mapActions(["getToDoItems"]),
+    ...mapMutations(["openDialog"])
+  },
   created() {
     this.getToDoItems()
   }
@@ -29,16 +35,26 @@ export default {
 
 <style scoped>
 .container {
-  padding: 0 24px;
+  padding: 0 16px 0 24px;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .md-list {
   border: 1px solid #d9d9d9;
   padding: 0;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .md-list-item {
   border-bottom: 1px solid #d9d9d9;
+}
+
+.md-button {
+  margin-right: 0px;
 }
 </style>
