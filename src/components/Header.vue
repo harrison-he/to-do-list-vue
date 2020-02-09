@@ -15,15 +15,7 @@ export default {
       return {
         activeTab: "to-do-list"
       }
-    },
-    // created() {
-    //   this.activeTab = window.location.hash === "#/" ? "to-do-list" : "completed"
-    // },
-    // methods: {
-    //   changeTab(tab) {
-    //     this.activeTab = tab
-    //   }
-    // }
+    }
 }
 </script>
 

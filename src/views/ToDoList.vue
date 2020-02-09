@@ -2,23 +2,24 @@
   <div>
     <ToDoCreator />
     <md-list>
-      <md-list-item v-for="(toDoItem, i) in toDoItems" :key="i">{{ toDoItem }}</md-list-item>
+      <md-list-item v-for="({ id, title }) in toDoItems" :key="id">{{ title }}</md-list-item>
     </md-list>
   </div>
 </template>
 
 <script>
 import ToDoCreator from './../components/ToDoCreator'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: "toDoList",
   components: {
     ToDoCreator
   },
-  data() {
-    return {
-      toDoItems: ["Blah"]
-    };
+  computed: mapGetters(["toDoItems"]),
+  methods: mapActions(["getToDoItems"]),
+  created() {
+    this.getToDoItems()
   }
 };
 </script>
