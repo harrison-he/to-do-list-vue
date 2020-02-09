@@ -6,21 +6,29 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    toDoItems: []
+    toDoItems: [],
+    isDialogOpen: false
   },
   getters: {
-    toDoItems: state => state.toDoItems
+    toDoItems: state => state.toDoItems,
+    isDialogOpen: state => state.isDialogOpen
   },
   actions: {
     async getToDoItems({ commit }) {
       const toDoItems = (await axios.get("https://jsonplaceholder.typicode.com/todos")).data
 
-      commit("retrieveToDoItems", toDoItems)
-    }
+      commit("getToDoItems", toDoItems)
+    },
+    openDialog({ commit }) {
+      commit("openDialog")
+    } 
   },
   mutations: {
-    retrieveToDoItems(state, toDoItems) {
+    getToDoItems(state, toDoItems) {
       state.toDoItems = toDoItems
+    },
+    openDialog(state) {
+      state.isDialogOpen = true
     }
   },
   modules: {

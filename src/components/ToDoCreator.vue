@@ -1,27 +1,24 @@
 <template>
-  <div>
-    <md-field>
-      <label>Add To Do Item</label>
-      <md-input v-model="inputValue" />
-    </md-field>
-    <md-button @click="addTodo">Add</md-button>
-  </div>
+   <md-dialog-prompt
+      :md-active.sync="isDialogOpen"
+      v-model="toDoInput"
+      md-title="Add To Do Item"
+      md-input-placeholder="Enter To Do Item..."
+      md-confirm-text="Add" 
+    />
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: "ToDoCreator",
   data() {
     return {
-      inputValue: ""
+      toDoInput: ""
     };
   },
-  methods: {
-    addTodo() {
-      this.toDoItems = [...this.toDoItems, this.inputValue];
-      this.inputValue = "";
-    }
-  }
+  computed: mapGetters(["isDialogOpen"])
 };
 </script>
 
