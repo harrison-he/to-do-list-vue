@@ -15,21 +15,31 @@ export default new Vuex.Store({
   },
   actions: {
     async getToDoItems({ commit }) {
-      const toDoItems = (await axios.get("https://jsonplaceholder.typicode.com/todos")).data
+      const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos?_limit=15")
 
-      commit("getToDoItems", toDoItems)
+      commit("getToDoItems", data)
     },
-    openDialog({ commit }) {
-      commit("openDialog")
-    } 
+    async postToDoItem({ commit }, toDoItem) {
+      const { data } = await axios.post("https://jsonplaceholder.typicode.com/todos", toDoItem )
+
+      commit("closeDialog")
+      commit("postToDoItem", data)
+    }
   },
   mutations: {
+    openDialog(state) {
+      state.isDialogOpen = true
+    },
+    closeDialog(state) {
+      state.isDialogOpen = false
+    },
     getToDoItems(state, toDoItems) {
       state.toDoItems = toDoItems
     },
-    openDialog(state) {
-      state.isDialogOpen = true
+    postToDoItem(state, toDoItem) {
+      state.toDoItems = [...state.toDoItems, toDoItem]
     }
+
   },
   modules: {
   }

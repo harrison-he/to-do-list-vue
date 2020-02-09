@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
     name: "Header",
@@ -19,7 +19,7 @@ export default {
         activeTab: "to-do-list"
       }
     },
-    methods: mapActions(["openDialog"])
+    methods: mapMutations(["openDialog"])
 }
 </script>
 
