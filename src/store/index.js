@@ -22,20 +22,32 @@ export default new Vuex.Store({
   actions: {
     async getToDoItems({ commit }) {
       commit("startLoading")
-      const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos")
 
-      commit("getToDoItems", data)
-      commit("finishLoading")
+      try {
+        const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos")
+
+        commit("getToDoItems", data)
+        commit("finishLoading")
+      } catch (err) {
+        commit("finishLoading")
+        commit("openErrorDialog")
+      }
     },
     async postToDoItem({ commit }, toDoItem) {
       commit("startLoading")
-      const { data } = await axios.post("https://jsonplaceholder.typicode.com/todos", toDoItem )
 
-      commit("closeDialog")
-      commit("postToDoItem", data)
-      commit("finishLoading")
+      try {
+        const { data } = await axios.post("https://jsonplaceholder.typicode.com/todos", toDoItem)
+
+        commit("closeDialog")
+        commit("postToDoItem", data)
+        commit("finishLoading")
+      } catch (err) {
+        commit("finishLoading")
+        commit("openErrorDialog")
+      }
     },
-    async putToDoItem({ commit }, { id, ...updatedToDoItem}) {
+    async putToDoItem({ commit }, { id, ...updatedToDoItem }) {
       commit("startLoading")
 
       try {
@@ -47,14 +59,19 @@ export default new Vuex.Store({
         commit("finishLoading")
         commit("openErrorDialog")
       }
-     
     },
     async deleteToDoItem({ commit }, id) {
       commit("startLoading")
-      await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
-      commit("deleteToDoItem", id)
-      commit("finishLoading")
+      try {
+        await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+
+        commit("deleteToDoItem", id)
+        commit("finishLoading")
+      } catch (err) {
+        commit("finishLoading")
+        commit("openErrorDialog")
+      }
     }
   },
   mutations: {
