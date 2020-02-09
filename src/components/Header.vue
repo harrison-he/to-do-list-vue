@@ -1,6 +1,6 @@
 <template>
    <md-toolbar>
-      <h2 class="md-title">To Do List</h2>
+      <h2 class="md-title">ToDoView</h2>
       <nav>
         <md-button to="/" >To Do Items</md-button>
         <md-button to="/completed" >Completed</md-button>

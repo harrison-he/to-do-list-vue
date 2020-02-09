@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h2 class="md-title">Completed</h2>
+    <h2 class="md-headline">Completed</h2>
     <md-list>
-      <CompletedItem v-for="({ id, title }) in completedItems" :title="title" :key="id" />
+      <CompletedItem v-for="({ id, title }) in completedItems" :title="title" :key="id" :id="id" />
     </md-list>
   </div>
 </template>

@@ -1,20 +1,20 @@
 <template>
-  <div class="container">
-    <div class="top-row">
-      <h1 class="md-headline">To Do Items</h1>
-      <md-button class="md-raised" @click="openDialog" >Add To Do Item</md-button>
+    <div class="container">
+      <div class="top-row">
+        <h1 class="md-headline">To Do Items</h1>
+        <md-button class="md-raised" @click="openDialog">Add To Do Item</md-button>
+      </div>
+      <ToDoCreator />
+      <md-list>
+        <ToDoItem v-for="({ id, title }) in toDoItems" :key="id" :id="id" :title="title" />
+      </md-list>
     </div>
-    <ToDoCreator />
-    <md-list>
-      <ToDoItem v-for="({ id, title }) in toDoItems" :key="id" :title="title" />
-    </md-list>
-  </div>
 </template>
 
 <script>
-import ToDoCreator from './../components/ToDoCreator'
-import ToDoItem from './../components/ToDoItem'
-import { mapGetters, mapActions, mapMutations } from 'vuex'
+import ToDoCreator from "./../components/ToDoCreator";
+import ToDoItem from "./../components/ToDoItem";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "toDoList",
@@ -23,13 +23,8 @@ export default {
     ToDoItem
   },
   computed: mapGetters(["toDoItems"]),
-  methods: {
-    ...mapActions(["getToDoItems"]),
-    ...mapMutations(["openDialog"])
-  },
-  created() {
-    this.getToDoItems()
-  }
+  methods: mapMutations(["openDialog"])
+  
 };
 </script>
 
