@@ -1,16 +1,29 @@
 <template>
    <md-toolbar>
       <h1 class="md-title">To Do List</h1>
-      <md-tabs md-sync-route>
-        <md-tab id="to-do-list" md-label="To Do List" to="/" />
-        <md-tab id="completed" md-label="Completed" to="/completed" />
-      </md-tabs>
+      <nav>
+        <md-button id="to-do-list" to="/" >To Do List</md-button>
+        <md-button id="completed" to="/completed" >Completed</md-button>
+      </nav>
    </md-toolbar>
 </template>
 
 <script>
 export default {
-    name: "Header"
+    name: "Header",
+    data() {
+      return {
+        activeTab: "to-do-list"
+      }
+    },
+    // created() {
+    //   this.activeTab = window.location.hash === "#/" ? "to-do-list" : "completed"
+    // },
+    // methods: {
+    //   changeTab(tab) {
+    //     this.activeTab = tab
+    //   }
+    // }
 }
 </script>
 
