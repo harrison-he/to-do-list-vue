@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1 class="md-headline">To Do Items</h1>
     <ToDoCreator />
     <md-list>
       <ToDoItem v-for="({ id, title }) in toDoItems" :key="id" :title="title" />
@@ -34,7 +35,7 @@ export default {
 .md-list {
   border: 1px solid #d9d9d9;
   padding: 0;
-  margin-top: 16px;
+  margin: 16px 0;
 }
 
 .md-list-item {
