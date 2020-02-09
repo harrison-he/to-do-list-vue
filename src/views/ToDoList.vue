@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <ToDoCreator />
     <md-list>
       <md-list-item v-for="({ id, title }) in toDoItems" :key="id">{{ title }}</md-list-item>
@@ -23,3 +23,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container {
+  padding: 0 16px 0 24px;
+}
+
+.md-list {
+  border: 1px solid #d9d9d9;
+}
+
+.md-list-item {
+  border-bottom: 1px solid #d9d9d9;
+}
+</style>
