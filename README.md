@@ -1,5 +1,7 @@
 # to-do-list-vue
 
+Hosted @ https://to-do-view.herokuapp.com/#/
+
 ## Project setup
 ```
 npm install
