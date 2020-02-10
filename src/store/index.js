@@ -24,7 +24,7 @@ export default new Vuex.Store({
       commit("startLoading")
 
       try {
-        const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos")
+        const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos?_limit=20")
 
         commit("getToDoItems", data)
         commit("finishLoading")

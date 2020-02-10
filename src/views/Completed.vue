@@ -23,13 +23,13 @@ export default {
 
 <style scoped>
 .container {
-  padding: 0 24px;
+  padding: 0 16px 0 24px;
 }
 
 .md-list {
   border: 1px solid #d9d9d9;
   padding: 0;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .md-list-item {
